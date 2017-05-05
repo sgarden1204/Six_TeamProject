@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class csCCMove : MonoBehaviour
-{
+public class csCharacterMove : MonoBehaviour {
+
     public float movSpeed = 5.0f;
     public float jumpSpeed = 25.0f;
     public float gravity = 50.0f;
@@ -21,13 +21,13 @@ public class csCCMove : MonoBehaviour
 
     void Update()
     {
-       float ver = Input.GetAxis("Vertical");
-       float ang = Input.GetAxis("Horizontal");
+        float ver = Input.GetAxis("Vertical");
+        float ang = Input.GetAxis("Horizontal");
 
         if (controller.isGrounded)
         {
 
-            moveDirection = new Vector3(ang,0, ver);
+            moveDirection = new Vector3(ang, 0, ver);
             transform.LookAt(transform.position + moveDirection);
             moveDirection *= movSpeed;
 
