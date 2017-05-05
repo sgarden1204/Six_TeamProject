@@ -6,7 +6,7 @@ public class csCanvas : MonoBehaviour {
 
     public Canvas canvas;
     bool active;
-    GameObject obj;
+    //GameObject obj;
 
     void Start()
     {

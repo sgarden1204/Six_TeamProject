@@ -8,6 +8,6 @@ public class csActive : MonoBehaviour {
 
     public void SetActive()
     {
-        obj.SetActive(!obj.active);
+        obj.SetActive(!obj.activeSelf);
     }
 }
