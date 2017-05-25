@@ -892,14 +892,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 772561297}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83edad7c6acc9744ca67adfc763f5fb1, type: 3}
+  m_Script: {fileID: 11500000, guid: ce078ffb746c7fd46ac5a24c87a8c8ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1170478565}
   distance: 10
-  height: 10
+  height: 5
   rotationDamping: 0
-  heightDamping: 0
+  heightDamping: 50
 --- !u!1 &825320900
 GameObject:
   m_ObjectHideFlags: 0
@@ -1098,10 +1098,10 @@ GameObject:
   - component: {fileID: 1170478564}
   - component: {fileID: 1170478563}
   - component: {fileID: 1170478562}
-  - component: {fileID: 1170478566}
   - component: {fileID: 1170478567}
+  - component: {fileID: 1170478566}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1179,7 +1179,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1170478561}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5873807b3fdc14428274b7ce75e2c98, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c6f508f9a0d4cd4893f4aff53dd3ac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   movSpeed: 5
