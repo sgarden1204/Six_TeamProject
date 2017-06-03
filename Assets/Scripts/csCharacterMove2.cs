@@ -6,6 +6,7 @@ public class csCharacterMove2 : MonoBehaviour {
 
     public float speed = 3.0f;
     public float gravity = -20.0f;
+    public float speed_chage = 1.5f;
 
     CharacterController controller;
     Vector3 velocity;
@@ -34,14 +35,14 @@ public class csCharacterMove2 : MonoBehaviour {
             if (state == State.right)
             {
                 transform.Rotate(Vector3.up * -45.0f);
-                speed -= 1.5f;
+                speed -= speed_chage;
                 state = State.forward;
             }
 
             if (state == State.left)
             {
                 transform.Rotate(Vector3.up * 45.0f);
-                speed -= 1.5f;
+                speed -= speed_chage;
                 state = State.forward;
             }
 
@@ -52,7 +53,7 @@ public class csCharacterMove2 : MonoBehaviour {
             if(state == State.forward)
             {
                 transform.Rotate(Vector3.up * -45.0f);
-                speed += 1.5f;
+                speed += speed_chage;
                 state = State.left;
             }
 
@@ -74,7 +75,7 @@ public class csCharacterMove2 : MonoBehaviour {
             if (state == State.forward)
             {
                 transform.Rotate(Vector3.up * 45.0f);
-                speed += 1.5f;
+                speed += speed_chage;
                 state = State.right;
             }
 
