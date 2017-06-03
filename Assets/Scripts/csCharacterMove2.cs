@@ -181,4 +181,10 @@ public class csCharacterMove2 : MonoBehaviour {
         }
     }
 
+    public void ZigZag_MoveOn()
+    {
+        way3 = false;
+        zigzag = true;
+        way2 = false;
+    }
 }
