@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,29 +9,30 @@ public class csCharacterMove2 : MonoBehaviour {
     public float gravity = -20.0f;
     public float speed_chage = 1.5f;
 
-    public bool way3;
-    public bool way2;
-    public bool zigzag;
+    //public bool way3;
+    //public bool way2;
+    //public bool zigzag;
+    //public bool jump;
 
 
     CharacterController controller;
     Vector3 velocity;
 
-    enum State { left,right,forward,back};
-    State state;
+    enum Dir { left,right,forward,back};
+    Dir dir;
     
     enum Line { line1, line2, line3};
     Line line;
 
+    enum Move { way2, way3, zigzag, jump};
+    Move move;
+
 	// Use this for initialization
 	void Start () {
 
-        way2 = false;
-        way3 = true;
-        zigzag = false;
-
-        state = State.forward;
+        dir = Dir.forward;
         line = Line.line2;
+        move = Move.way3;
         controller = GetComponent<CharacterController>();
         velocity = Vector3.zero;
     }
@@ -38,21 +40,35 @@ public class csCharacterMove2 : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if(way3)
+        if(Input.GetKeyDown(KeyCode.Space))
         {
-            Way3_Move();
+            this.transform.Translate(new Vector3(0.0f, 5.0f, 0.0f));
         }
 
-        if(way2)
+        switch(move)
         {
+            case Move.way3:
+                Way3_Move();
+                break;
+            case Move.way2:
+                //
+                break;
+            case Move.zigzag:
+                ZigZag_Move();
+                break;
+            case Move.jump:
+                Jump_Move();
+                break;
 
+            default:
+                break;
         }
 
-        if(zigzag)
-        {
-            ZigZag_Move();
-        }
+    }
 
+    void Jump_Move()
+    {
+        
     }
 
     void ZigZag_Move()
@@ -61,43 +77,43 @@ public class csCharacterMove2 : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            if (state == State.forward)
+            if (dir == Dir.forward)
             {
                 //공백
             }
 
-            if (state == State.right)
+            if (dir == Dir.right)
             {
                 transform.Rotate(Vector3.up * -45.0f);
                 speed -= speed_chage;
-                state = State.forward;
+                dir = Dir.forward;
             }
 
-            if (state == State.left)
+            if (dir == Dir.left)
             {
                 transform.Rotate(Vector3.up * 45.0f);
                 speed -= speed_chage;
-                state = State.forward;
+                dir = Dir.forward;
             }
 
         }
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            if (state == State.forward)
+            if (dir == Dir.forward)
             {
                 transform.Rotate(Vector3.up * -45.0f);
                 speed += speed_chage;
-                state = State.left;
+                dir = Dir.left;
             }
 
-            if (state == State.right)
+            if (dir == Dir.right)
             {
                 transform.Rotate(Vector3.up * -90.0f);
-                state = State.left;
+                dir = Dir.left;
             }
 
-            if (state == State.left)
+            if (dir == Dir.left)
             {
                 //아무것도 안함
             }
@@ -106,22 +122,22 @@ public class csCharacterMove2 : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            if (state == State.forward)
+            if (dir == Dir.forward)
             {
                 transform.Rotate(Vector3.up * 45.0f);
                 speed += speed_chage;
-                state = State.right;
+                dir = Dir.right;
             }
 
-            if (state == State.right)
+            if (dir == Dir.right)
             {
                 //공백
             }
 
-            if (state == State.left)
+            if (dir == Dir.left)
             {
                 transform.Rotate(Vector3.up * 90.0f);
-                state = State.right;
+                dir = Dir.right;
             }
         }
 
@@ -181,10 +197,23 @@ public class csCharacterMove2 : MonoBehaviour {
         }
     }
 
+    public void Jump_MoveOn()
+    {
+        move = Move.jump;
+    }
+
     public void ZigZag_MoveOn()
     {
-        way3 = false;
-        zigzag = true;
-        way2 = false;
+        move = Move.zigzag;
+    }
+
+    public void  Way3_MoveOn()
+    {
+        //
+    }
+
+    public void Way2_MoveOn()
+    {
+        //
     }
 }
