@@ -27,12 +27,16 @@ public class csCharacterMove2 : MonoBehaviour {
     enum Move { way2, way3, zigzag, jump};
     Move move;
 
+    enum FlyLine { fline1,fline2,first};
+    FlyLine fline;
+
 	// Use this for initialization
 	void Start () {
 
         dir = Dir.forward;
         line = Line.line2;
         move = Move.way3;
+        fline = FlyLine.first;
         controller = GetComponent<CharacterController>();
         velocity = Vector3.zero;
     }
@@ -51,7 +55,7 @@ public class csCharacterMove2 : MonoBehaviour {
                 Way3_Move();
                 break;
             case Move.way2:
-                //
+                Way2_Move();
                 break;
             case Move.zigzag:
                 ZigZag_Move();
@@ -64,6 +68,47 @@ public class csCharacterMove2 : MonoBehaviour {
                 break;
         }
 
+    }
+
+    private void Way2_Move()
+    {
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+
+        if(Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            if(fline == FlyLine.first)
+            {
+                this.transform.Translate(new Vector3(-15.0f, 0.0f, 0.0f));
+                fline = FlyLine.fline1;
+            }
+
+            if (fline == FlyLine.fline1)
+            {
+                //
+            }
+
+            if(fline == FlyLine.fline2)
+            {
+                this.transform.Translate(new Vector3(-45.0f, 0.0f, 0.0f));
+                fline = FlyLine.fline1;
+            }
+           
+        }
+
+        if(Input.GetKeyDown(KeyCode.RightArrow))
+        {
+
+            if (fline == FlyLine.fline2)
+            {
+                //아무것도 안함
+            }
+
+            if (fline == FlyLine.fline1)
+            {
+                this.transform.Translate(new Vector3(+45.0f, 0.0f, 0.0f));
+                fline = FlyLine.fline2;
+            }
+        }
     }
 
     void Jump_Move()
@@ -197,6 +242,8 @@ public class csCharacterMove2 : MonoBehaviour {
         }
     }
 
+ 
+
     public void Jump_MoveOn()
     {
         move = Move.jump;
@@ -214,6 +261,11 @@ public class csCharacterMove2 : MonoBehaviour {
 
     public void Way2_MoveOn()
     {
-        //
+        move = Move.way2;
+    }
+
+    public void Set_Position()
+    {
+        this.transform.position.Set(-6.9f, 1.0f, 1000.0f);
     }
 }

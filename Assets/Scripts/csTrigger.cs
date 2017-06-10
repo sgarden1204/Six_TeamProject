@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class csTrigger : MonoBehaviour {
 
-    public AudioClip Clip;
+    public AudioClip Clip1;
+    public AudioClip Clip2;
+    public AudioClip Clip3;
+    public AudioClip Clip4;
     public float vol = 1.0f;
 
     public int hit_Count = 0;
 
+    csCharacterMove2 script;
     GameObject obj = null;
+
     GameObject[] UpCube = new GameObject[6];
     GameObject[] DownCube = new GameObject[6];
     GameObject[] UpDownCube = new GameObject[6];
@@ -17,6 +22,8 @@ public class csTrigger : MonoBehaviour {
     void Start()
     {
         //Clip = GetComponent<AudioSource>();
+        obj = GameObject.Find("Dog");
+        script  = obj.GetComponent<csCharacterMove2>();
 
         UpCube[0] = GameObject.Find("UpCube1");
         UpCube[1] = GameObject.Find("UpCube2");
@@ -41,7 +48,6 @@ public class csTrigger : MonoBehaviour {
 
 
         // hit_Count = 0;
-        obj = GameObject.Find("Dog");
 
     }
 
@@ -52,10 +58,9 @@ public class csTrigger : MonoBehaviour {
         switch(hit_Count)
         {
             case 1:
-            GetComponent<AudioSource>().PlayOneShot(Clip, vol);
+            GetComponent<AudioSource>().PlayOneShot(Clip1, vol);
                 break;
             case 2:
-                csCharacterMove2 script = obj.GetComponent<csCharacterMove2>();
                 script.ZigZag_MoveOn();
                 break;
             case 3:
@@ -95,6 +100,14 @@ public class csTrigger : MonoBehaviour {
                 UpDownCube[5].transform.Translate(new Vector3(0.0f, -2.5f, 0.0f));
                 break;
             case 12:
+                script.Way2_MoveOn();
+                break;
+            case 13:
+                GetComponent<AudioSource>().Stop();
+                break;
+            case 14:
+                GetComponent<AudioSource>().PlayOneShot(Clip2, vol);
+                script.Set_Position();
                 break;
             default:
                 break;
