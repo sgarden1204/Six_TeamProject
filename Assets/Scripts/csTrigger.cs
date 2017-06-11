@@ -12,6 +12,8 @@ public class csTrigger : MonoBehaviour {
 
     public int hit_Count = 0;
 
+    Vector3 Velocity = new Vector3(500.0f, 500.0f, 500.0f);
+
     csCharacterMove2 script;
     GameObject obj = null;
 
@@ -58,24 +60,62 @@ public class csTrigger : MonoBehaviour {
         switch(hit_Count)
         {
             case 1:
-            GetComponent<AudioSource>().PlayOneShot(Clip1, vol);
+                //GetComponent<AudioSource>().PlayOneShot(Clip1, vol);
+
+                //TEST
+                ///////////////////////////////////////////
+                GetComponent<AudioSource>().PlayOneShot(Clip2, vol);
+                script.Set_Position();
+                script.Way3_MoveOn();
+                //////////////////////////////////////////
                 break;
             case 2:
                 script.ZigZag_MoveOn();
                 break;
             case 3:
-                UpCube[0].transform.Translate(new Vector3(0.0f, 3.0f, 0.0f));
-                UpCube[1].transform.Translate(new Vector3(0.0f, 3.0f, 0.0f));
+                //UpCube[0].transform.Translate(new Vector3(0.0f, 3.0f, 0.0f));
+                //UpCube[1].transform.Translate(new Vector3(0.0f, 3.0f, 0.0f));
+                //TEST
+                /////////////////////////////////
+                Debug.Log("점프대 오픈!");
+                // Velocity = Velocity * Time.deltaTime;
+                Velocity = new Vector3(500.0f, 500.0f, 500.0f);
+                GetComponent<Rigidbody>().AddForce(Velocity);
+               // obj.GetComponent<Rigidbody>().AddForce(45.0f, 45.0f, 0.0f);
+                ////////////////////////////////
                 break;
             case 4:
-                UpCube[2].transform.Translate(new Vector3(0.0f, 3.0f, 0.0f));
-                UpCube[3].transform.Translate(new Vector3(0.0f, 3.0f, 0.0f));
+                //////////////////////////////////////////////////////////
+                Debug.Log("점프대222222");
+                // Velocity = Velocity * Time.deltaTime;
+                GetComponent<Rigidbody>().velocity = Vector3.zero;
+                Velocity = new Vector3(-500.0f,500.0f, 500.0f);
+                GetComponent<Rigidbody>().AddForce(Velocity);
+                /////////////////////////////////////////////////////////
+
+                //UpCube[2].transform.Translate(new Vector3(0.0f, 3.0f, 0.0f));
+                //UpCube[3].transform.Translate(new Vector3(0.0f, 3.0f, 0.0f));
                 break;
             case 5:
-                UpCube[4].transform.Translate(new Vector3(0.0f, 3.0f, 0.0f));
-                UpCube[5].transform.Translate(new Vector3(0.0f, 3.0f, 0.0f));
+
+                ///////////////////////////////////////
+                Debug.Log("점프대3333333");
+                GetComponent<Rigidbody>().velocity = Vector3.zero;
+                Velocity = new Vector3(500.0f, 400.0f, 500.0f);
+                GetComponent<Rigidbody>().AddForce(Velocity);
+                ////////////////////////////////////////
+
+                //UpCube[4].transform.Translate(new Vector3(0.0f, 3.0f, 0.0f));
+                //UpCube[5].transform.Translate(new Vector3(0.0f, 3.0f, 0.0f));
                 break;
             case 6:
+                ////////////////////////////////////////
+                Debug.Log("점프대라스트");
+                GetComponent<Rigidbody>().velocity = Vector3.zero;
+                Velocity = new Vector3(0.0f, 400.0f, 500.0f);
+                GetComponent<Rigidbody>().AddForce(Velocity);
+
+                ////////////////////////////////////////
                 DownCube[0].transform.Translate(new Vector3(0.0f, -2.5f, 0.0f));
                 DownCube[1].transform.Translate(new Vector3(0.0f, -2.5f, 0.0f));
                 break;
@@ -108,6 +148,13 @@ public class csTrigger : MonoBehaviour {
             case 14:
                 GetComponent<AudioSource>().PlayOneShot(Clip2, vol);
                 script.Set_Position();
+                script.Way3_MoveOn();
+                break;
+            case 15:
+                script.Way3_MoveOn();
+                break;
+            case 16:
+                obj.GetComponent<Rigidbody>().AddForce(45.0f, 45.0f, 0.0f);
                 break;
             default:
                 break;

@@ -266,6 +266,7 @@ public class csCharacterMove2 : MonoBehaviour {
 
     public void Set_Position()
     {
-        this.transform.position.Set(-6.9f, 1.0f, 1000.0f);
+        this.transform.position = new Vector3(-6.9f, 1.0f, 1000.0f);
+        //transform.position.Set(-6.9f, 1.0f, 1000.0f);
     }
 }
