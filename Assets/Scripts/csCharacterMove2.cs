@@ -256,7 +256,7 @@ public class csCharacterMove2 : MonoBehaviour {
 
     public void  Way3_MoveOn()
     {
-        //
+        move = Move.way3;
     }
 
     public void Way2_MoveOn()
@@ -268,5 +268,10 @@ public class csCharacterMove2 : MonoBehaviour {
     {
         this.transform.position = new Vector3(-6.9f, 1.0f, 1000.0f);
         //transform.position.Set(-6.9f, 1.0f, 1000.0f);
+    }
+
+    public void Set_Position2()
+    {
+        this.transform.position = new Vector3(20.0f, 1.0f, 1475.0f);
     }
 }

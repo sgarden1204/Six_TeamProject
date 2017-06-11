@@ -20,10 +20,14 @@ public class csTrigger : MonoBehaviour {
     GameObject[] UpCube = new GameObject[6];
     GameObject[] DownCube = new GameObject[6];
     GameObject[] UpDownCube = new GameObject[6];
+    GameObject[] ChangeSphere = new GameObject[10];
+    GameObject[] MoveBlock = new GameObject[5];
+    GameObject[] FinalStage = new GameObject[5];
+
+    public Material Type1;
 
     void Start()
     {
-        //Clip = GetComponent<AudioSource>();
         obj = GameObject.Find("Dog");
         script  = obj.GetComponent<csCharacterMove2>();
 
@@ -48,9 +52,27 @@ public class csTrigger : MonoBehaviour {
         UpDownCube[4] = GameObject.Find("UpCube9");
         UpDownCube[5] = GameObject.Find("DownCube9");
 
+        ChangeSphere[0] = GameObject.Find("Sphere1");
+        ChangeSphere[1] = GameObject.Find("Sphere2");
+        ChangeSphere[2] = GameObject.Find("Sphere3");
+        ChangeSphere[3] = GameObject.Find("Sphere4");
+        ChangeSphere[4] = GameObject.Find("Sphere42");
+        ChangeSphere[5] = GameObject.Find("Sphere5");
+        ChangeSphere[6] = GameObject.Find("Sphere52");
+        ChangeSphere[7] = GameObject.Find("Sphere6");
+        ChangeSphere[8] = GameObject.Find("Sphere62");
 
-        // hit_Count = 0;
+        MoveBlock[0] = GameObject.Find("BlockMove1");
+        MoveBlock[1] = GameObject.Find("BlockMove2");
+        MoveBlock[2] = GameObject.Find("BlockMove3");
+        MoveBlock[3] = GameObject.Find("BlockMove4");
+        MoveBlock[4] = GameObject.Find("BlockMove5");
 
+        FinalStage[0] = GameObject.Find("Goal1");
+        FinalStage[1] = GameObject.Find("Goal2");
+        FinalStage[2] = GameObject.Find("Goal3");
+        FinalStage[3] = GameObject.Find("Goal4");
+        FinalStage[4] = GameObject.Find("Goal5");
     }
 
     void OnTriggerEnter(Collider other)
@@ -60,104 +82,189 @@ public class csTrigger : MonoBehaviour {
         switch(hit_Count)
         {
             case 1:
-                //GetComponent<AudioSource>().PlayOneShot(Clip1, vol);
-
-                //TEST
-                ///////////////////////////////////////////
-                GetComponent<AudioSource>().PlayOneShot(Clip2, vol);
-                script.Set_Position();
+                script.Set_Position2();
                 script.Way3_MoveOn();
-                //////////////////////////////////////////
                 break;
             case 2:
-                script.ZigZag_MoveOn();
+                GetComponent<AudioSource>().PlayOneShot(Clip3, vol);
                 break;
+
             case 3:
-                //UpCube[0].transform.Translate(new Vector3(0.0f, 3.0f, 0.0f));
-                //UpCube[1].transform.Translate(new Vector3(0.0f, 3.0f, 0.0f));
-                //TEST
-                /////////////////////////////////
-                Debug.Log("점프대 오픈!");
-                // Velocity = Velocity * Time.deltaTime;
-                Velocity = new Vector3(500.0f, 500.0f, 500.0f);
-                GetComponent<Rigidbody>().AddForce(Velocity);
-               // obj.GetComponent<Rigidbody>().AddForce(45.0f, 45.0f, 0.0f);
-                ////////////////////////////////
+                ChangeSphere[0].GetComponent<Renderer>().material.color = Color.green;
+                Debug.Log("첫번째 원");
                 break;
             case 4:
-                //////////////////////////////////////////////////////////
-                Debug.Log("점프대222222");
-                // Velocity = Velocity * Time.deltaTime;
-                GetComponent<Rigidbody>().velocity = Vector3.zero;
-                Velocity = new Vector3(-500.0f,500.0f, 500.0f);
-                GetComponent<Rigidbody>().AddForce(Velocity);
-                /////////////////////////////////////////////////////////
-
-                //UpCube[2].transform.Translate(new Vector3(0.0f, 3.0f, 0.0f));
-                //UpCube[3].transform.Translate(new Vector3(0.0f, 3.0f, 0.0f));
+                ChangeSphere[1].GetComponent<Renderer>().material.color = Color.green;
+                Debug.Log("2222번째 원");
                 break;
             case 5:
-
-                ///////////////////////////////////////
-                Debug.Log("점프대3333333");
-                GetComponent<Rigidbody>().velocity = Vector3.zero;
-                Velocity = new Vector3(500.0f, 400.0f, 500.0f);
-                GetComponent<Rigidbody>().AddForce(Velocity);
-                ////////////////////////////////////////
-
-                //UpCube[4].transform.Translate(new Vector3(0.0f, 3.0f, 0.0f));
-                //UpCube[5].transform.Translate(new Vector3(0.0f, 3.0f, 0.0f));
+                ChangeSphere[2].GetComponent<Renderer>().material.color = Color.green;
+                Debug.Log("3333번째 원");
                 break;
             case 6:
-                ////////////////////////////////////////
-                Debug.Log("점프대라스트");
-                GetComponent<Rigidbody>().velocity = Vector3.zero;
-                Velocity = new Vector3(0.0f, 400.0f, 500.0f);
-                GetComponent<Rigidbody>().AddForce(Velocity);
-
-                ////////////////////////////////////////
-                DownCube[0].transform.Translate(new Vector3(0.0f, -2.5f, 0.0f));
-                DownCube[1].transform.Translate(new Vector3(0.0f, -2.5f, 0.0f));
+                ChangeSphere[3].transform.Translate(new Vector3(-5.0f, 0.0f, 0.0f));
+                ChangeSphere[4].transform.Translate(new Vector3(+5.0f, 0.0f, 0.0f));
                 break;
             case 7:
-                DownCube[2].transform.Translate(new Vector3(0.0f, -2.5f, 0.0f));
-                DownCube[3].transform.Translate(new Vector3(0.0f, -2.5f, 0.0f));
+                ChangeSphere[5].transform.Translate(new Vector3(+5.0f, 0.0f, 0.0f));
+                ChangeSphere[6].transform.Translate(new Vector3(-5.0f, 0.0f, 0.0f));
                 break;
             case 8:
-                DownCube[4].transform.Translate(new Vector3(0.0f, -2.5f, 0.0f));
-                DownCube[5].transform.Translate(new Vector3(0.0f, -2.5f, 0.0f));
+                ChangeSphere[7].transform.Translate(new Vector3(+5.0f, 0.0f, 0.0f));
+                ChangeSphere[8].transform.Translate(new Vector3(-5.0f, 0.0f, 0.0f));
                 break;
             case 9:
-                UpDownCube[0].transform.Translate(new Vector3(0.0f, 3.0f, 0.0f));
-                UpDownCube[1].transform.Translate(new Vector3(0.0f, -2.5f, 0.0f));
+                script.ZigZag_MoveOn();
                 break;
             case 10:
-                UpDownCube[2].transform.Translate(new Vector3(0.0f, 3.0f, 0.0f));
-                UpDownCube[3].transform.Translate(new Vector3(0.0f, -2.5f, 0.0f));
+                MoveBlock[0].transform.Translate(new Vector3(-5.0f, 0.0f, 0.0f));
                 break;
             case 11:
-                UpDownCube[4].transform.Translate(new Vector3(0.0f, 3.0f, 0.0f));
-                UpDownCube[5].transform.Translate(new Vector3(0.0f, -2.5f, 0.0f));
+                MoveBlock[1].transform.Translate(new Vector3(+5.0f, 0.0f, 0.0f));
                 break;
             case 12:
-                script.Way2_MoveOn();
+                MoveBlock[2].transform.Translate(new Vector3(-5.0f, 0.0f, 0.0f));
                 break;
             case 13:
-                GetComponent<AudioSource>().Stop();
+                MoveBlock[3].transform.Translate(new Vector3(+5.0f, 0.0f, 0.0f));
                 break;
             case 14:
-                GetComponent<AudioSource>().PlayOneShot(Clip2, vol);
-                script.Set_Position();
-                script.Way3_MoveOn();
+                MoveBlock[4].transform.Translate(new Vector3(-5.0f, 0.0f, 0.0f));
                 break;
             case 15:
-                script.Way3_MoveOn();
+                FinalStage[0].transform.Translate(new Vector3(0.0f, +45.0f, 0.0f));
                 break;
             case 16:
-                obj.GetComponent<Rigidbody>().AddForce(45.0f, 45.0f, 0.0f);
+                FinalStage[1].transform.Translate(new Vector3(0.0f, +45.0f, 0.0f));
+                break;
+            case 17:
+                FinalStage[2].transform.Translate(new Vector3(0.0f, +45.0f, 0.0f));
+                break;
+            case 18:
+                FinalStage[3].transform.Translate(new Vector3(0.0f, +45.0f, 0.0f));
+                break;
+            case 19:
+                FinalStage[4].transform.Translate(new Vector3(0.0f, +45.0f, 0.0f));
                 break;
             default:
                 break;
         }
+
+        //switch(hit_Count)
+        //{
+        //    case 1:
+        //        GetComponent<AudioSource>().PlayOneShot(Clip1, vol);
+        //        //TEST
+        //        ///////////////////////////////////////////
+        //        //////////////////////////////////////////
+        //        break;
+        //    case 2:
+        //        script.ZigZag_MoveOn();
+        //        break;
+        //    case 3:
+        //        UpCube[0].transform.Translate(new Vector3(0.0f, 3.0f, 0.0f));
+        //        UpCube[1].transform.Translate(new Vector3(0.0f, 3.0f, 0.0f));
+        //        //TEST
+        //        /////////////////////////////////
+        //        ////////////////////////////////
+        //        break;
+        //    case 4:
+        //        //////////////////////////////////////////////////////////
+        //        /////////////////////////////////////////////////////////
+
+        //        UpCube[2].transform.Translate(new Vector3(0.0f, 3.0f, 0.0f));
+        //        UpCube[3].transform.Translate(new Vector3(0.0f, 3.0f, 0.0f));
+        //        break;
+        //    case 5:
+
+        //        ///////////////////////////////////////
+        //        ////////////////////////////////////////
+
+        //        UpCube[4].transform.Translate(new Vector3(0.0f, 3.0f, 0.0f));
+        //        UpCube[5].transform.Translate(new Vector3(0.0f, 3.0f, 0.0f));
+        //        break;
+        //    case 6:
+        //        ////////////////////////////////////////
+
+        //        ////////////////////////////////////////
+        //        DownCube[0].transform.Translate(new Vector3(0.0f, -2.5f, 0.0f));
+        //        DownCube[1].transform.Translate(new Vector3(0.0f, -2.5f, 0.0f));
+        //        break;
+        //    case 7:
+        //        DownCube[2].transform.Translate(new Vector3(0.0f, -2.5f, 0.0f));
+        //        DownCube[3].transform.Translate(new Vector3(0.0f, -2.5f, 0.0f));
+        //        break;
+        //    case 8:
+        //        DownCube[4].transform.Translate(new Vector3(0.0f, -2.5f, 0.0f));
+        //        DownCube[5].transform.Translate(new Vector3(0.0f, -2.5f, 0.0f));
+        //        break;
+        //    case 9:
+        //        UpDownCube[0].transform.Translate(new Vector3(0.0f, 3.0f, 0.0f));
+        //        UpDownCube[1].transform.Translate(new Vector3(0.0f, -2.5f, 0.0f));
+        //        break;
+        //    case 10:
+        //        UpDownCube[2].transform.Translate(new Vector3(0.0f, 3.0f, 0.0f));
+        //        UpDownCube[3].transform.Translate(new Vector3(0.0f, -2.5f, 0.0f));
+        //        break;
+        //    case 11:
+        //        UpDownCube[4].transform.Translate(new Vector3(0.0f, 3.0f, 0.0f));
+        //        UpDownCube[5].transform.Translate(new Vector3(0.0f, -2.5f, 0.0f));
+        //        break;
+        //    case 12:
+        //        script.Way2_MoveOn();
+        //        break;
+        //    case 13:
+        //        GetComponent<AudioSource>().Stop();
+        //        break;
+        //    case 14:
+        //        GetComponent<AudioSource>().PlayOneShot(Clip2, vol);
+        //        script.Set_Position();
+        //        script.Way3_MoveOn();
+        //        break;
+        //    case 15:
+        //        script.ZigZag_MoveOn();
+        //        break;
+        //    case 16:
+        //        Velocity = new Vector3(500.0f, 500.0f, 500.0f);
+        //        GetComponent<Rigidbody>().AddForce(Velocity);
+        //        break;
+
+        //    case 17:
+        //        Debug.Log("점프대222222");
+        //        // Velocity = Velocity * Time.deltaTime;
+        //        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        //        Velocity = new Vector3(-500.0f, 500.0f, 500.0f);
+        //        GetComponent<Rigidbody>().AddForce(Velocity);
+        //        break;
+
+        //    case 18:
+        //        Debug.Log("점프대3333333");
+        //        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        //        Velocity = new Vector3(500.0f, 400.0f, 500.0f);
+        //        GetComponent<Rigidbody>().AddForce(Velocity);
+        //        break;
+
+        //    case 19:
+        //        Debug.Log("점프대라스트");
+        //        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        //        Velocity = new Vector3(0.0f, 400.0f, 500.0f);
+        //        GetComponent<Rigidbody>().AddForce(Velocity);
+        //        break;
+
+        //    case 20:
+        //        script.ZigZag_MoveOn();
+        //        break;
+        //    case 21:
+        //        GetComponent<AudioSource>().Stop();
+        //        GetComponent<AudioSource>().PlayOneShot(Clip3, vol);
+        //        break;
+
+        //    case 22:
+        //        break;
+        //    default:
+        //        break;
+        //}
+
+
     }
 }
