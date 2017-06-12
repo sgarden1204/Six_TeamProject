@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class csTrigger : MonoBehaviour {
@@ -328,6 +329,7 @@ public class csTrigger : MonoBehaviour {
                 FinalStage[4].transform.Translate(new Vector3(0.0f, +45.0f, 0.0f));
                 break;
             case 39:
+                SceneManager.LoadScene("End_Scene");
                 break;
             case 40:
                 break;
