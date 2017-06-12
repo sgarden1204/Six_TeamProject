@@ -262,13 +262,15 @@ public class csTrigger : MonoBehaviour {
                 script.ZigZag_MoveOn();
                 break;
             case 21:
+                this.transform.localRotation = Quaternion.identity;
+                this.transform.position = new Vector3(19.82f, 1.0f, 1480.0f);
                 GetComponent<AudioSource>().Stop();
                 GetComponent<AudioSource>().PlayOneShot(Clip3, vol);
-                script.Way3_MoveOn();
                 break;
 
             case 22:
                 //script.Set_Position();
+                script.Way3_MoveOn();
                 ChangeSphere[0].GetComponent<Renderer>().material.color = Color.green;
                 break;
 
@@ -299,13 +301,13 @@ public class csTrigger : MonoBehaviour {
                 MoveBlock[0].transform.Translate(new Vector3(-5.0f, 0.0f, 0.0f));
                 break;
             case 30:
-                MoveBlock[1].transform.Translate(new Vector3(-5.0f, 0.0f, 0.0f));
+                MoveBlock[1].transform.Translate(new Vector3(+5.0f, 0.0f, 0.0f));
                 break;
             case 31:
                 MoveBlock[2].transform.Translate(new Vector3(-5.0f, 0.0f, 0.0f));
                 break;
             case 32:
-                MoveBlock[3].transform.Translate(new Vector3(-5.0f, 0.0f, 0.0f));
+                MoveBlock[3].transform.Translate(new Vector3(+5.0f, 0.0f, 0.0f));
                 break;
             case 33:
                 MoveBlock[4].transform.Translate(new Vector3(-5.0f, 0.0f, 0.0f));
