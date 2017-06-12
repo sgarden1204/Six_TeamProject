@@ -75,6 +75,19 @@ public class csTrigger : MonoBehaviour {
         FinalStage[4] = GameObject.Find("Goal5");
     }
 
+    void Update()
+    {
+        if(this.transform.position.y < -10.0f)
+        {
+            hit_Count = 0;
+            this.transform.localRotation = Quaternion.identity;
+            this.transform.position = new Vector3(0.0f, 1.0f, 0.0f);
+            script.Re_Start();
+            GetComponent<AudioSource>().Stop();
+        }
+    }
+
+
     void OnTriggerEnter(Collider other)
     {
         hit_Count++;

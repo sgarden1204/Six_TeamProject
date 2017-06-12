@@ -274,4 +274,12 @@ public class csCharacterMove2 : MonoBehaviour {
     {
         this.transform.position = new Vector3(20.0f, 1.0f, 1475.0f);
     }
+
+    public void Re_Start()
+    {
+        dir = Dir.forward;
+        line = Line.line2;
+        move = Move.way3;
+        fline = FlyLine.first;
+    }
 }
